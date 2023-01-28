@@ -24,11 +24,9 @@ dotenv.config();
 const url = process.env.MONGODB_URL;
 
 Mongoose.connect(url);
-app.post("/users", async (req,res)=>{
-    let data = req.body;
-    let object = await UserModel(data);
-    let result = object.save();
-    res.send(result);
+
+app.get("/", (req,res)=>{
+    res.send("You are in the root page!.");
 });
 
 app.use("/api/authenticate",auth);
